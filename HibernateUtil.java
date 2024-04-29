@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project;
+package javadb;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -23,11 +23,9 @@ public class HibernateUtil {
     static {
         try {
              // loads configuration and mappings
-            Configuration configuration = new Configuration().configure("/project/hibernate.cfg.xml"); //
+            Configuration configuration = new Configuration().configure("/javadb/hibernate.cfg.xml");
             ServiceRegistry serviceRegistry= new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-             configuration.addAnnotatedClass(user.class); //Class Name
-             configuration.addAnnotatedClass(hall.class);
-             configuration.addAnnotatedClass(reservation.class);
+             configuration.addAnnotatedClass(Student.class);
             // builds a session factory from the service registry
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);  
         } catch (Throwable ex) {
